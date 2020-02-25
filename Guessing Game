@@ -1,0 +1,27 @@
+from random import *
+
+secret_number = randint(1,100)
+count = 0
+print("You only get 10 tries! goodluck")
+while True:
+    your_number = int(input("guess the number between 1 to 100: "))
+    if secret_number == your_number:
+        print("you won")
+        print("The End!")
+        break
+        
+    elif your_number > 100:
+        print("you are guessing out of range, guess between 1 to 100")
+        
+    elif your_number > secret_number:
+        print("guess lower")
+        
+    elif your_number < secret_number:
+        print("guess higher")
+        
+    count = count+1
+    if count == 10:
+        print("you are out of tries")
+        print("you failed to guess the number")
+        break
+

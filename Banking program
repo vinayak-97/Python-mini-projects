@@ -1,0 +1,49 @@
+import sys
+
+class Banking:
+    def __init__(self,balance=0):
+        self.balance = balance
+    
+    def deposit(self):
+        amount = int(input('please enter the money you want to deposit: '))
+        self.balance +=amount
+        print(f'your balance after deposit is {self.balance}')
+        
+    def bal_enq(self):
+        print(f'your balance is {self.balance}')
+    
+    def withdraw(self):
+        amount = int(input('please enter the money you want to withdraw: '))
+        if amount > self.balance:
+            print('insufficient balance')
+            print('thanks for banking')
+            sys.exit(0)
+        else:
+            self.balance -= amount
+            print(f'your balance after withdraw is {self.balance}')
+    
+b = Banking(5000)
+name = input('please enter your name: ')
+print()
+print(f'Hi {name} welcome to State Bank of India')
+
+while True:
+    print()
+    print("please choose your option d/w/b/q for deposit/withdraw/balance/quit")
+    option = input('please enter your option: ')
+    
+    if option == 'd':
+        b.deposit()
+
+    elif option == 'w':
+        b.withdraw()
+        
+    elif option == 'b':
+        b.bal_enq()
+        
+    elif option == 'q':
+        print(f'Thanks for Banking {name} have a good day')
+        sys.exit(0)
+        
+    else:
+        print('invalid input, please choose the correct option')

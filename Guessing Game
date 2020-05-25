@@ -1,3 +1,4 @@
+#written by Vinayak BHosale
 from random import *
 
 secret_number = randint(1,100)

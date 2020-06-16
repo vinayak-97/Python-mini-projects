@@ -1,0 +1,59 @@
+Assignment 2:
+
+Create first page and generate unique token and click on Send button.
+
+Unique token should have alphanumeric values with counter 001 incremental at the end.
+
+In first page on click of Send, Encrypt token and redirect to second page.
+
+Second page should decrypt token and display token with first 4 Alpha and counter value Example ABC001 or XYZ002 ..ITEM013,ITEM014 etc. and also display Back button to send back to first page.
+
+As long in the session the counter should be incremental.  
+
+Run unit tests in python to cover validation.
+
+Workflow: First page ITEMSUB001, click on Send. Redirect to second page and display ITEM001. click on Back button to go back to First page. First page ITEMC0T002, click on Send. Redirect to second page and 
+display ITEM002. click on Back button to go back to First page. and so on..
+
+solution
+
+#Assignment 2 submission by Vinayak
+print("************** welcome to Token Encrypter ***************")
+
+import random
+import string
+
+count = 1
+
+while True:
+    gen = ''.join(random.choices(string.ascii_uppercase, k = 4))
+    res = ''.join(random.choices(string.ascii_uppercase + string.digits, k = 3))
+    print("\n[....PAGE 1....]")
+    if count <= 9:
+        token = str(gen)+str(res)+"00"+str(count)
+    elif count >9 and count <100:
+        token = str(gen)+str(res)+"0"+str(count)
+    elif count > 99:
+        token = str(gen)+str(res)+str(count)
+    print("\ngenerated token :",token)
+    print("[===========] encryption in process...")
+    print("encryption Done !!!")
+    print("........................................................................................")
+    raw = token[0:4]
+    if count <= 9:
+        encryp = raw+"00"+str(count)
+    elif count > 9 and count < 100:
+        encryp = raw+"0"+str(count)
+    elif count > 99:
+        encryp = raw+str(count)
+    print("\n[....PAGE 2....]")
+    print("\n[encrypted token]: ",encryp)
+    print("........................................................................................")
+    count +=1
+    back = input("\npress y to go back to [....PAGE 1....] or q to quit the process: ").lower()
+    if back == 'y':
+        continue
+    else:
+        break
+    
+print("\n***** Thank-you for using Token Encrypter! *****")

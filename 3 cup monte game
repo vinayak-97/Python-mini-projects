@@ -1,0 +1,31 @@
+#code written by Vinayak Bhosale
+
+from random import shuffle
+
+def shuffle_list(my_list):
+    shuffle(my_list)
+    return my_list
+    
+def player_guess():
+    guess = ""
+    while guess not in ["0","1","2"]:
+        guess = input("pick a number: 0,1 or 2")
+    return int(guess)
+    
+    
+def check_guess(my_list,guess):
+    if my_list[guess]=="O":
+        print("correct you won!!!")
+        print(my_list)
+    else:
+        print("wrong you lost!")
+        print(my_list)
+        
+        
+mylist = [" ","O"," "]
+
+mixed_list = shuffle_list(mylist)
+
+Guess = player_guess()
+
+check_guess(mixed_list,Guess)
